@@ -893,18 +893,18 @@ if(WITH_GZFILEOP)
 endif()
 
 if(NOT DEFINED BUILD_SHARED_LIBS)
-    add_library(zlib SHARED ${ZLIB_ALL_SRCS})
-    add_library(zlibstatic STATIC ${ZLIB_ALL_SRCS})
+    add_library(ng_zlib SHARED ${ZLIB_ALL_SRCS})
+    add_library(ng_zlibstatic STATIC ${ZLIB_ALL_SRCS})
 
     set(ZLIB_INSTALL_LIBRARIES zlib zlibstatic)
 else()
-    add_library(zlib ${ZLIB_ALL_SRCS})
+    add_library(ng_zlib ${ZLIB_ALL_SRCS})
 
     if(NOT BUILD_SHARED_LIBS)
-        add_library(zlibstatic ALIAS zlib)
+        add_library(ng_zlibstatic ALIAS ng_zlib)
     endif()
 
-    set(ZLIB_INSTALL_LIBRARIES zlib)
+    set(ZLIB_INSTALL_LIBRARIES ng_zlib)
 endif()
 
 foreach(ZLIB_INSTALL_LIBRARY ${ZLIB_INSTALL_LIBRARIES})
